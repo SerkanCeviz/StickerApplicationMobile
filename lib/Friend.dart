@@ -14,7 +14,7 @@ class _FriendState extends State<Friend> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Sticker"),
+          title: Text("Find Friend"),
           backgroundColor: Colors.deepPurple,
         ),
         backgroundColor: Colors.indigoAccent,

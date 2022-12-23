@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sticker/Friend.dart';
 import 'package:sticker/Home.dart';
 import 'package:sticker/Saved.dart';
+import 'package:sticker/addStickerView.dart';
 
 class ButtomNavBar extends StatefulWidget {
 
@@ -12,6 +13,7 @@ class ButtomNavBar extends StatefulWidget {
 
   @override
   State<ButtomNavBar> createState() => _ButtomNavBarState();
+
 }
 
 class _ButtomNavBarState extends State<ButtomNavBar> {
@@ -21,18 +23,20 @@ class _ButtomNavBarState extends State<ButtomNavBar> {
   Widget build(BuildContext context) {
 
     return AnimatedBottomNavigationBar(
-      icons: [Icons.home, Icons.search, Icons.bookmark],
+      icons: [Icons.home, Icons.search, Icons.bookmark, Icons.add],
       activeIndex: _currentTab,
-      activeColor: Colors.lightBlueAccent,
       gapLocation: GapLocation.none,
+      activeColor: Colors.blue[900],
       inactiveColor: Colors.blue[900],
       backgroundColor: Colors.black,
       onTap: (int) {
+        print(int);
         setState((){
           _currentTab=int;
         });
         name=getName(int);
-        Navigator.push(context, MaterialPageRoute(builder: (Context)=>name));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (Context)=>name),);
       },
     );
   }
@@ -42,6 +46,7 @@ Widget getName(int number){
     case 0: return Home();
     case 1: return Friend();
     case 2: return Saved();
+    case 3: return AddSticker();
   }
   return Home();
 }
@@ -75,17 +80,8 @@ class Buttons extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-              margin: EdgeInsets.fromLTRB(10, 10, 10,10),
-              child: Icon(Icons.favorite,color: Colors.red)
-          ),
-          Container(
             margin: EdgeInsets.fromLTRB(10, 10, 10,10),
-            child:Icon(Icons.save, color: Colors.blue,),
-
-          ),
-          Container(
-              margin: EdgeInsets.fromLTRB(10, 10, 10,10),
-              child:Icon(Icons.edit,color: Colors.green,)
+            child:Icon(Icons.save, color: Colors.green,),
           ),
         ],
       ),
